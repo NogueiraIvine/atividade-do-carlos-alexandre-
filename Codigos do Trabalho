@@ -1,0 +1,71 @@
+Tabela clientes
+CREATE TABLE Clientes (
+    Id_clientes INT PRIMARY KEY,
+    Nome_clientes VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    Endereço VARCHAR(100),
+    Cidade VARCHAR(100),
+    FOREIGN KEY (Id_clientes)
+Valores da Tabela Clientes
+INSERT INTO Clientes (Id_clientes, Nome_clientes, Email, Endereço, Cidade) VALUES
+(1, 'Ana Silva', 'ana.silva@email.com', 'Rua das Flores, 123', 'São Paulo'),
+(2, 'Bruno Souza', 'bruno.souza@email.com', 'Av. Brasil, 456', 'Rio de Janeiro'),
+(3, 'Carla Mendes', 'carla.mendes@email.com', 'Rua Amapá, 789', 'Belo Horizonte'),
+(4, 'Daniel Oliveira', 'daniel.oliveira@email.com', 'Travessa das Palmeiras, 12', 'Curitiba'),
+(5, 'Elaine Costa', 'elaine.costa@email.com', 'Rua dos Lírios, 34', 'Porto Alegre');
+Resultado
+SELECT * FROM Clientes;
+
+Tabela Pets
+CREATE TABLE Pets(
+    Id_pet INT PRIMARY KEY,
+    Nome_pet VARCHAR(100) NOT NULL,
+    Sexo CHAR(100) NOT NULL,
+    Raça VARCHAR(100) NOT NULL,
+    Pelagem VARCHAR(100)
+    );
+Valores da Tabeça Pets
+INSERT INTO Pets (Id_pet, Nome_pet, Sexo, Raça, Pelagem) VALUES
+(1, 'Marcos', 'Macho', 'Labrador', 'Curta'),
+(2, 'Luna', 'Femia', 'Poodle', 'Cacheada'),
+(3, 'Tom', 'Macho', 'Bulldog', 'Curta'),
+(4, 'Sara', 'Femeia', 'Shih Tzu', 'Longa'),
+(5, 'Duke', 'Macho', 'Husky', 'Densa');
+Resultado
+SELECT *FROM Pets;
+
+Tabela Serviços
+CREATE TABLE Serviço(
+    Id_serviço INT PRIMARY KEY,
+    Nome_serviço VARCHAR(100) NOT NULL,
+    Descrição VARCHAR(255),
+    Preço DECIMAL(10,2) NOT NULL,
+    Duração_minutos INT,
+    FOREIGN KEY (Id_serviço) REFERENCES Serviço(Id_serviço)
+    );
+Valores da Tabela Serviço
+INSERT INTO Serviço (Id_serviço, Nome_serviço, Descrição, Preço, Duração_minutos) VALUES
+(1, 'Banho', 'Banho completo para pets', 40.00, 60),
+(2, 'Tosa', 'Tosa higiênica e estética', 60.00, 90),
+(3, 'Consulta Veterinária', 'Avaliação geral do animal', 120.00, 45),
+(4, 'Vacinação', 'Aplicação de vacinas', 80.00, 20),
+(5, 'Corte de Unhas', 'Corte e acabamento das unhas', 20.00, 15);
+Resultado
+SELECT *FROM Serviços;
+
+Tabela Atendimento
+CREATE TABLE Atendimento(
+    Id_atendimento INT PRIMARY KEY,
+    Id_clientes INT,
+    Id_pet INT,
+    Id_serviço INT,
+    Data_atendimento DATE,
+    FOREIGN KEY (Id_clientes) REFERENCES Clientes(Id_clientes),
+    FOREIGN KEY (Id_pet) REFERENCES Pets(Id_pet),
+    FOREIGN KEY (Id_serviço) REFERENCES Serviço(Id_serviço)
+    );
+
+
+
+
+
